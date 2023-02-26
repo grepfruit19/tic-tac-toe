@@ -1,0 +1,10 @@
+.outer-box {
+    border: solid;
+    background-color: blueviolet;
+}
+
+.inner-box {
+    background-color: white;
+    margin: 5px;
+    padding: 15px;
+}
