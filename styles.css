@@ -3,13 +3,43 @@ body {
 }
 
 .outer-box {
-    border: solid;
-    width: 75%;
-    background-color: blueviolet;
+    border: none;
+    height: 700px;
+    width: 700px;
+    background-color: rgb(191, 177, 204);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .inner-box {
     background-color: white;
-    margin: 10px;
-    padding: 20px;
+    height: 150px;
+    width: 150px ;
+    margin: 5px;
+    padding: 0px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button {
+    background-color: aquamarine;
+    border: none;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: azure;
 }
