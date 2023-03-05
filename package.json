@@ -1,0 +1,14 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "Sample repository for teaching basics of coding.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.4.3"
+  }
+}
