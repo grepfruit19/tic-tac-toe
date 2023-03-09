@@ -2,6 +2,37 @@
 
 Sample repository for teaching basics of coding.
 
+# Day 2.5 -- Homework
+
+Assuming you've installed nvm, pull down this repo and run `npm install`. This will install some external packages required to run the homework.
+
+After running that, try running `npm run test` in your terminal. This will run some tests that are in `/test/homework.spec.js`. Open that file and you will see some problems in this format:
+
+```js
+function example() {
+  return 5;
+}
+
+test("Example - write the function above that returns the number 5", () => {
+  expect(example()).toBe(5);
+});
+```
+
+Fill out the functions above each test so that they do what the test asks you. If you do it right, then you should see a green checkmark when you run `npm run test` next to that specific test, like this.
+
+```
+PASS  test/homework.spec.js
+  ✓ Example - write the function above that returns the number 5 (1 ms)
+  ✓ Write a function that uses a loop to generate an array of increasing numbers (2 ms)
+  ✓ Write a function that takes in an array and returns a new array contains the first X elements
+  ✓ Write a function that creates a 2D array of a given size. Each element should be a 0
+  ✓ Given a 2D array, write a function that will grab the bottom right element. (1 ms)
+```
+
+If not, you'll get a message showing what exactly went wrong. You'll probably see that message as soon as you run `npm run test`, since those functions aren't filled out yet.
+
+Work on one problem at a time and run the tests after you complete each function. You may want to comment out the tests for a problem you're not currently working on, just so your terminal stays a little cleaner. Let me know if you have any questions!
+
 # Day 2
 
 We're going to learn some of the basics of JavaScript by creating a data structure that stores a tic-tac-toe board.
@@ -34,9 +65,9 @@ const arrayInArray = [[]];
 
 // And maybe you can see where we're going with this:
 const grid = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
 ];
 
 /*

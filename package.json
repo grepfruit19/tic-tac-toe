@@ -4,7 +4,7 @@
   "description": "Sample repository for teaching basics of coding.",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
