@@ -1,11 +1,82 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import { useState } from "react";
+import Head from "next/head";
+import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
+
+/*
+  In React, a component is basically an HTML element that has logic built into it.
+  This means that it can handle things like state, and logic.
+*/
+
+const styles = {
+  outerBox: {
+    border: "none",
+    height: "700px",
+    width: "700px",
+    backgroundColor: "rgb(191, 177, 204)",
+    margin: "auto",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  innerBox: {
+    backgroundColor: "white",
+    height: "150px",
+    width: "150px",
+    margin: "5px",
+    padding: "0px",
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  row: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  button: {
+    backgroundColor: "darkBlue",
+    border: "none",
+    width: "150px",
+    height: "150px",
+    cursor: "pointer",
+  },
+};
+
+function Button() {
+  const [buttonState, setButtonState] = useState("X");
+
+  function updateState() {
+    if (buttonState === "") setButtonState("X");
+    else if (buttonState === "X") setButtonState("O");
+    else if (buttonState === "O") setButtonState("");
+  }
+
+  return (
+    <button onClick={updateState} style={styles.button}>
+      {buttonState}
+    </button>
+  );
+}
 
 export default function Home() {
+  const [boardState, setBoardState] = useState([
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+  ]);
+
+  function renderBoard() {
+    const output = [];
+    for (let i = 0; i < 3; i++) {
+      output.push(<Button />);
+    }
+    return output;
+  }
+
   return (
     <>
       <Head>
@@ -14,110 +85,43 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+
+      <div style={styles.outerBox}>
+        {renderBoard()}
+        {/* <div style={styles.row}>
+          <div style={styles.innerBox}>
+            <Button />
+          </div>
+          <div style={styles.innerBox}>
+            <Button />
+          </div>
+          <div style={styles.innerBox}>
+            <Button />
           </div>
         </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
+        <div style={styles.row}>
+          <div style={styles.innerBox}>
+            <Button />
+          </div>
+          <div style={styles.innerBox}>
+            <Button />
+          </div>
+          <div style={styles.innerBox}>
+            <Button />
           </div>
         </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+        <div style={styles.row}>
+          <div style={styles.innerBox}>
+            <Button />
+          </div>
+          <div style={styles.innerBox}>
+            <Button />
+          </div>
+          <div style={styles.innerBox}>
+            <Button />
+          </div>
+        </div> */}
+      </div>
     </>
-  )
+  );
 }

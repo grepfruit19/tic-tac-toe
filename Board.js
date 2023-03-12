@@ -17,29 +17,6 @@ class Board {
     this.gameOver = false;
   }
 
-  // // X = !, O = 2
-  // addXToBoard(x, y) {
-  //     if (this.gameOver) {
-  //         throw new Error('The game is over!');
-  //     }
-  //     this.board[x][y] = 1;
-  //     this.checkRow();
-  //     this.checkColumn();
-  //     this.checkDiagonal();
-  //     this.turn = 2;
-  // }
-
-  // addOToBoard(x, y) {
-  //     if (this.gameOver) {
-  //         throw new Error('The game is over!');
-  //     }
-  //     this.board[x][y] = 2;
-  //     this.checkRow();
-  //     this.checkColumn();
-  //     this.checkDiagonal();
-  //     this.turn = 1;
-  // }
-
   addGamePieceToBoard(x, y) {
     if (this.gameOver) {
       throw new Error("The game is over!");
@@ -57,7 +34,15 @@ class Board {
     this.checkDiagonal();
   }
 
-  reset() {}
+  reset() {
+    this.board = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+    ];
+    this.turn = 1;
+    this.gameOver = false;
+  }
 
   checkRow() {
     for (let i = 0; i < this.board.length; i++) {
@@ -70,7 +55,31 @@ class Board {
     }
   }
 
-  checkColumn() {}
+  checkColumn() {
+    for (let i = 0; i < this.board.length; i++) {
+      if (this.board[0][i] === 0) return;
+      if (
+        this.board[0][i] === this.board[1][i] &&
+        this.board[1][i] === this.board[2][i]
+      ) {
+        this.gameOver = true;
+      }
+    }
+  }
 
-  checkDiagonal() {}
+  checkDiagonal() {
+    if (this.board[1][1] === 0) return;
+    if (
+      this.board[0][0] === this.board[1][1] &&
+      this.board[2][2] === this.board[1][1]
+    ) {
+      this.gameOver = true;
+    }
+    if (
+      this.board[0][2] === this.board[1][1] &&
+      this.board[2][0] === this.board[1][1]
+    ) {
+      this.gameOver = true;
+    }
+  }
 }
